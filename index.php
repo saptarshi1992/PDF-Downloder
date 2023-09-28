@@ -4,10 +4,10 @@ date_default_timezone_set('Asia/Kolkata');
 if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] === UPLOAD_ERR_OK) {
     // Get the uploaded CSV file
     $csvFile = $_FILES['csv_file']['tmp_name'];
-    if (isset($_POST['exampleInput1'])) {
-        $user_name = $_POST['exampleInput1'];
+    if (isset($_POST['name'])) {
+        $user_name = $_POST['name'];
     }
- $file_name = $_FILES['csv_file']['name'];
+    $file_name = $_FILES['csv_file']['name'];
     $file_name = explode('.', $file_name);
 
     $downloadFolder = 'downloads-' . $user_name . '/' . $file_name[0] . '/' . date("Y/m/d") . '/' . time() . '/';
@@ -34,7 +34,7 @@ if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] === UPLOAD_ERR_OK
 ?>
 
 
-<!doctype html>
+<!--<!doctype html>
 <html lang="en">
 
     <head>
@@ -60,6 +60,47 @@ if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] === UPLOAD_ERR_OK
                 <input class="form-control" type="submit" value="Upload CSV and Download URLs">
             </form>
 
+        </div>
+    </body>
+
+</html>!-->
+<html>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>PDF-Downloader</h3>
+                            <p>Fill in the data below.</p>
+                            <form class="requires-validation" novalidate>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="name" placeholder="Name"
+                                        required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="email" name="email" placeholder="E-mail Address">
+                                        
+                                        <label for="formFileLg" class="form-label">Upload File Here</label>
+                                </div>
+                                <div class="col-md-12">
+                                   
+                                    <input class="form-control" type="file" name="csv_file">
+                                    <input class="form-control" type="submit" value="Upload CSV and Download URLs">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 
